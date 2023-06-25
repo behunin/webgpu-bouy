@@ -7,6 +7,7 @@ import "@babylonjs/inspector";
 import "@babylonjs/loaders/glTF";
 
 // DAT
+// @ts-expect-error
 import * as dat from 'dat.gui';
 
 // WGSL
@@ -369,7 +370,7 @@ class Ocean {
 
         this._glowLayer.addIncludedOnlyMesh(this._scene.getMeshByName("glassCovers_low") as BABYLON.Mesh);
 
-        this._glowLayer.customEmissiveColorSelector = (mesh, subMesh, material, result) => {
+        this._glowLayer.customEmissiveColorSelector = (_mesh, _subMesh, _material, result) => {
             result.set(this._lightBuoy.diffuse.r, this._lightBuoy.diffuse.g, this._lightBuoy.diffuse.b, 1);
         };
 
@@ -597,7 +598,7 @@ class OceanGUI {
         this._gui.domElement.style.display = v ? "" : "none";
     }
 
-    constructor(hasProceduralSky: boolean, scene: BABYLON.Scene, engine: BABYLON.Engine, paramRead: (name: string) => any, paramChanged: (name: string, value: any) => void) {
+    constructor(hasProceduralSky: boolean, scene: BABYLON.Scene, _engine: BABYLON.Engine, paramRead: (name: string) => any, paramChanged: (name: string, value: any) => void) {
         this._scene = scene;
         this._visible = true;
         this._onKeyObserver = null;
@@ -2485,7 +2486,7 @@ class FFT {
     private _verticalStepIFFT: BABYLON.ComputeShader[];
     private _permute: BABYLON.ComputeShader;
 
-    constructor(engine: BABYLON.Engine, scene: BABYLON.Scene, rttDebug: RTTDebug, debugFirstIndex: number, size: number) {
+    constructor(engine: BABYLON.Engine, _scene: BABYLON.Scene, rttDebug: RTTDebug, debugFirstIndex: number, size: number) {
         this._engine = engine;
         this._rttDebug = rttDebug;
         this._debugFirstIndex = debugFirstIndex;
@@ -3134,50 +3135,10 @@ class EXRSerializer {
         }
     }
 
-    private _addInt8(v: number | number[]): void {
-        if (Array.isArray(v)) {
-            this._capacity(v.length);
-            for (let i = 0; i < v.length; ++i) {
-                this._view.setInt8(this._dataLength++, v[i]);
-            }
-        } else {
-            this._capacity(1);
-            this._view.setInt8(this._dataLength, v);
-            this._dataLength += 1;
-        }
-    }
-
     private _addUint8(v: number): void {
         this._capacity(1);
         this._view.setUint8(this._dataLength, v);
         this._dataLength += 1;
-    }
-
-    private _addInt16(v: number | number[]): void {
-        if (Array.isArray(v)) {
-            this._capacity(2 * v.length);
-            for (let i = 0; i < v.length; ++i) {
-                this._view.setInt16(this._dataLength, v[i], true);
-                this._dataLength += 2;
-            }
-        } else {
-            this._capacity(2);
-            this._view.setInt16(this._dataLength, v, true);
-            this._dataLength += 2;
-        }
-    }
-
-    private _addUint16(v: number | number[]): void {
-        if (Array.isArray(v)) {
-            this._capacity(2 * v.length);
-            for (let i = 0; i < v.length; ++i) {
-                this._view.setUint16(this._dataLength, v[i], true);
-                this._dataLength += 2;
-            }
-        } else {
-            this._view.setUint16(this._dataLength, v, true);
-            this._dataLength += 2;
-        }
     }
 
     private _addInt32(v: number | number[]): void {
@@ -3910,7 +3871,7 @@ const K = new Vector3Float32(f32(0.686), f32(0.678), f32(0.666));
 const rayleighZenithLength = f32(8.4E3);
 const mieZenithLength = f32(1.25E3);
 const unitVec = new Vector3Float32(f32(1), f32(1), f32(1));
-const twoVec = new Vector3Float32(f32(2), f32(2), f32(2));
+// const twoVec = new Vector3Float32(f32(2), f32(2), f32(2));
 const oneAndHalfVec = new Vector3Float32(f32(1.5), f32(1.5), f32(1.5));
 const halfOneVec = new Vector3Float32(f32(0.5), f32(0.5), f32(0.5));
 const tenthVec = new Vector3Float32(f32(0.1), f32(0.1), f32(0.1));
@@ -4029,7 +3990,6 @@ const texColorCst = new Vector3Float32(f32(f32(0.0) * f32(0.3)), f32(f32(0.001) 
     const L0 = tenthVec.multiply(Fex);
 
     //L0 += (sunE * 19000.0 * Fex) * sundisk;
-    const sundisk = 1.;
     L0.addInPlace(Fex.scale(f32(sunE * 19000.0)));
 
     //vec3 whiteScale = 1.0/Uncharted2Tonemap(vec3(W));
