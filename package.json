@@ -1,0 +1,30 @@
+{
+    "name": "webgpu-bouy",
+    "version": "0.1.0",
+    "author": "Levi Behunin",
+    "description": "webgpu bouy sample",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/behunin/webgpu-bouy.git"
+    },
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build --config vite.config.github.js",
+        "preview": "vite preview"
+    },
+    "devDependencies": {
+        "@types/dom-webcodecs": "^0.1.7",
+        "@webgpu/types": "^0.1.32",
+        "gl-matrix": "^3.4.3",
+        "typescript": "^5.1.0",
+        "vite": "^4.3.5"
+    },
+    "dependencies": {
+        "@babylonjs/core": "^6.9.0",
+        "@babylonjs/gui": "^6.9.0",
+        "@babylonjs/inspector": "^6.9.0",
+        "@babylonjs/loaders": "^6.9.0",
+        "@babylonjs/materials": "^6.9.0",
+        "dat.gui": "^0.7.9"
+    }
+}
