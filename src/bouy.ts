@@ -5,6 +5,7 @@ import { SkyMaterial } from "@babylonjs/materials/sky";
 import "@babylonjs/core/Debug/debugLayer";
 import "@babylonjs/inspector";
 import "@babylonjs/loaders/glTF";
+import "@babylonjs/serializers"
 
 // DAT
 // @ts-expect-error
@@ -3616,9 +3617,9 @@ class Vector3Float32 extends BABYLON.Vector3 {
      * @param otherVector defines the second operand
      * @returns the resulting Vector3Float32
      */
-    public static addScalar(orig: BABYLON.DeepImmutable<Vector3Float32>, scalar: number): Vector3Float32 {
+    public static addScalar(scalar: number): Vector3Float32 {
         const result = new Vector3Float32(scalar, scalar, scalar);
-        return result.addToRef(orig, result);
+        return result.addToRef(result, result);
     }
 }
 
@@ -3917,11 +3918,16 @@ const texColorCst = new Vector3Float32(f32(f32(0.0) * f32(0.3)), f32(f32(0.001) 
     const W = new Vector3Float32(f32(1000.0), f32(1000.0), f32(1000.0));
 
     const Uncharted2Tonemap = (x: Vector3Float32) => {
-        const c1 = Vector3Float32.addScalar(x.scale(A), f32(C * B));
-        const c2 = Vector3Float32.addScalar(x.scale(A), B);
-        const c3 = Vector3Float32.addScalar(x.multiply(c1), f32(D * EEE));
-        const c4 = Vector3Float32.addScalar(x.multiply(c2), f32(D * F));
-        return Vector3Float32.addScalar(c3.divide(c4), -f32(EEE / F));
+        x.scale(A);
+        const c1 = Vector3Float32.addScalar(f32(C * B));
+        x.scale(A);
+        const c2 = Vector3Float32.addScalar(B);
+        x.multiply(c1);
+        const c3 = Vector3Float32.addScalar(f32(D * EEE));
+        x.multiply(c2);
+        const c4 = Vector3Float32.addScalar(f32(D * F));
+        c3.divide(c4);
+        return Vector3Float32.addScalar(-f32(EEE / F));
     };
 
     Vector3Float32.ToFloat32(this.sunPosition, sunPosition);

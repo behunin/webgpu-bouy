@@ -23,6 +23,7 @@
         "@babylonjs/inspector": "^6.9.0",
         "@babylonjs/loaders": "^6.9.0",
         "@babylonjs/materials": "^6.9.0",
+        "@babylonjs/serializers": "^6.9.0",
         "dat.gui": "^0.7.9"
     }
 }
