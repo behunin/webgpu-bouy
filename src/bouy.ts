@@ -3996,7 +3996,8 @@ const texColorCst = new Vector3Float32(f32(f32(0.0) * f32(0.3)), f32(f32(0.001) 
     const L0 = tenthVec.multiply(Fex);
 
     //L0 += (sunE * 19000.0 * Fex) * sundisk;
-    L0.addInPlace(Fex.scale(f32(sunE * 19000.0)));
+    const suntmp = Fex.scale(f32(sunE * 19000.0))
+    L0.addInPlace(suntmp.scaleInPlace(1.0));
 
     //vec3 whiteScale = 1.0/Uncharted2Tonemap(vec3(W));
     const whiteScale = unitVec.divide(Uncharted2Tonemap(W));
