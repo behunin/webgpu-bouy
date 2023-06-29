@@ -35,10 +35,13 @@ npm run dev #or yarn run dev
 └─ 📄 readme.md       # Read Me!
 ```
 
-## For Windows and MacOS users, Chrome and Edge 114+ come with WebGPU support enabled
+# For Windows and MacOS users, Chrome and Edge 114+ come with WebGPU support enabled
 
 ## How to enable WebGPU support
 For Edge < 113, please open `edge://flags/#enable-unsafe-webgpu`, and enable the flag.
+
 For Chrome < 113, please open `chrome://flags/#enable-unsafe-webgpu`, and enable the flag.
+
 For FireFox Nightly, please open `about:config`, and change `dom.webgpu.enabled` to `true`.
+
 For Chrome on linux, please launch like so `./chrome --enable-features=Vulkan,UseSkiaRenderer` and then open `chrome://flags/#enable-unsafe-webgpu` and enable the flag.
