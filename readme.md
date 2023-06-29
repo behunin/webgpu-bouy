@@ -22,8 +22,7 @@ npm run dev #or yarn run dev
 
 ```bash
 ├─ 📂 node_modules/   # Dependencies
-│  ├─ 📁 @webgpu      # WebGPU types for TS
-│  └─ 📁 ...          # Other dependencies (TypeScript, Vite, etc.)
+│  └─ 📁 ...          # (TypeScript, Vite, etc.)
 ├─ 📂 src/            # Source files
 │  ├─ 📁 shaders      # Folder for shader files
 │  └─ 📄 *.ts         # TS files for each demo
@@ -36,7 +35,10 @@ npm run dev #or yarn run dev
 └─ 📄 readme.md       # Read Me!
 ```
 
-## How to enable WebGPU
-1. For Edge Canary, please open `edge://flags/#enable-unsafe-webgpu`, and enable the flag
-2. For FireFox Nightly, please open `about:config`, and change `dom.webgpu.enabled` to `true`
-3. For Chrome on linux, please launch like so `./chrome --enable-features=Vulkan,UseSkiaRenderer` and then open `chrome://flags/#enable-unsafe-webgpu` and enable the flag
+## For Windows and MacOS users, Chrome and Edge 114+ come with WebGPU support enabled
+
+## How to enable WebGPU support
+For Edge < 113, please open `edge://flags/#enable-unsafe-webgpu`, and enable the flag.
+For Chrome < 113, please open `chrome://flags/#enable-unsafe-webgpu`, and enable the flag.
+For FireFox Nightly, please open `about:config`, and change `dom.webgpu.enabled` to `true`.
+For Chrome on linux, please launch like so `./chrome --enable-features=Vulkan,UseSkiaRenderer` and then open `chrome://flags/#enable-unsafe-webgpu` and enable the flag.

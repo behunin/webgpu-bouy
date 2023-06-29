@@ -253,7 +253,7 @@ class Ocean {
 
         const panel = GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
 
-        const textNOk = "**Use WebGPU to watch this demo which requires compute shaders support. To enable WebGPU please use Chrome Canary or Edge canary. Also select the WebGPU engine from the top right drop down menu.**";
+        const textNOk = "!!\nThis demo requires WebGPU compute.\nFor WebGPU compute support please use Chrome or Edge 114+, for Firefox use the nightly build\n!!";
 
         const info = new GUI.TextBlock();
         info.text = textNOk;
